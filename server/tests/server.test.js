@@ -19,7 +19,7 @@ describe('check routes', () => {
                 expect(resp.statusCode).toEqual(successCode);
                 done();
             });
-    }
+        }
     );
     test(`Route POST`, (done) => {
         testServer(app).post(route)
