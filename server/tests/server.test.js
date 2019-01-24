@@ -8,7 +8,7 @@ describe('check routes', () => {
     test(`Route GET returns array`, (done) => {
         testServer(app).get(route)
             .then((resp) => {
-                expect(ArrayisArray(resp)).toEqual(true);
+                expect(Array.isArray(resp.body)).toEqual(true);
                 done();
             });
         }
@@ -17,14 +17,14 @@ describe('check routes', () => {
         testServer(app).get(route)
             .then((resp) => {
                 const returnedArrayIsCorrect = (
-                    resp.length === 0 || // if empty array, pass 
+                    resp.body.length === 0 || // if empty array, pass 
                     (
-                        resp[0].id &&
-                        resp[0].name &&
-                        resp[0].gender &&
-                        resp[0].age &&
-                        (resp[0].ready_to_transfer === true || resp[0].ready_to_transfer === false) &&
-                        (resp[0].notes === null || resp[0].notes.length > 0)
+                        resp.body[0].id &&
+                        resp.body[0].name &&
+                        resp.body[0].gender &&
+                        resp.body[0].age &&
+                        (resp.body[0].ready_to_transfer === true || resp.body[0].ready_to_transfer === false) &&
+                        (resp.body[0].notes === null || resp.body[0].notes.length > 0)
                     )
                 );
                 expect(returnedArrayIsCorrect).toEqual(true);
