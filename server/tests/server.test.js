@@ -5,7 +5,7 @@ describe('check routes', () => {
     const successCode = 200;
     const route = '/api/koala';
     const koalaId = 1;
-    test(`route`, (done) => {
+    test(`Route GET`, (done) => {
         testServer(app).get(route)
             .then((resp) => {
                 expect(resp.statusCode).toEqual(successCode);
@@ -13,7 +13,7 @@ describe('check routes', () => {
             });
         }
     );
-    test(`route`, (done) => {
+    test(`Route POST`, (done) => {
         testServer(app).post(route)
             .then((resp) => {
                 expect(resp.statusCode).toEqual(successCode);
@@ -21,16 +21,16 @@ describe('check routes', () => {
             });
     }
     );
-    test(`route`, (done) => {
-        testServer(app).put(route)
+    test(`Route PUT`, (done) => {
+        testServer(app).put(`${route}/${koalaId}`)
             .then((resp) => {
                 expect(resp.statusCode).toEqual(successCode);
                 done();
             });
     }
     );
-    test(`route`, (done) => {
-        testServer(app).delete(route)
+    test(`Route DELETE`, (done) => {
+        testServer(app).delete(`${route}/${koalaId}`)
             .then((resp) => {
                 expect(resp.statusCode).toEqual(successCode);
                 done();
