@@ -1,9 +1,9 @@
-const inputView = (state = [], action) => {
+const inputView = (state = false , action) => {
     switch (action.type) {
     case 'SET_INPUT':
-        return action.payload;
+        return true;
     case 'SET_LIST':
-        return action.payload;
+        return false;
       default:
         return state;
     }
