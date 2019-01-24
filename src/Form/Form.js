@@ -11,6 +11,27 @@ class Form extends Component {
         notes: '',
     };
 
+    postNewKoala = (event) => {
+        event.preventDefault();
+
+        if (this.state.name && this.state.style && this.state.release && this.state.description) {
+            this.props.dispatch({
+                type: 'ADD_KOALA',
+                payload: {
+                    name: this.state.name,
+                    gender: this.state.gender,
+                    age: this.state.age,
+                    ready_to_transfer: this.state.ready_to_transfer,
+                    notes: this.state.notes,
+                },
+            })
+        } else {
+            // this.props.dispatch({ type: 'ADD_KOALA_ERROR' });
+            console.log('complete all fields');
+            
+        }
+    } // end postNewKoala
+
 
     handleInputChangeFor = propertyName => (event) => {
         this.setState({
@@ -37,22 +58,18 @@ class Form extends Component {
                     <div>
                         <label htmlFor="gender">
                             Gender
+                            {/* ///////fix this */}
                             <div>
-                                <input type="radio" id="huey" name="drone" value="huey"
+                                <input type="radio" id="female" name="gender" value="female" 
+                                    onChange={this.handleInputChangeFor('gender')}
                                     checked />
-                                    <label for="huey">Huey</label>
+                                    <label for="Female">Female</label>
                             </div>
-
-                                <div>
-                                    <input type="radio" id="dewey" name="drone" value="dewey" />
-                                        <label for="dewey">Dewey</label>
+                            <div>
+                                <input type="radio" id="male" name="gender" value="male" 
+                                onChange={this.handleInputChangeFor('gender')} />
+                                    <label for="Male">Male</label>
                             </div>
-                            <input
-                                type="text"
-                                name="gender"
-                                value={this.state.gender}
-                                onChange={this.handleInputChangeFor('gender')}
-                            />
                         </label>
                     </div>
                     <div>
