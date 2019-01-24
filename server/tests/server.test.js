@@ -16,7 +16,6 @@ describe('check routes', () => {
     test(`Route GET has column keys if array not empty`, (done) => {
         testServer(app).get(route)
             .then((resp) => {
-                console.log('in GET test:',resp.body);
                 const returnedArrayIsCorrect = (
                     resp.body.length === 0 || // if empty array, pass 
                     (
