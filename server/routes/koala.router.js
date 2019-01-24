@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
+const Koala = require('../models/koala.model');
+Koala.sync()
 
 
 router.get('/', (req, res) => {

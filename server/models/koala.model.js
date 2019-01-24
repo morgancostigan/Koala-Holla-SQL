@@ -31,6 +31,6 @@ const Koala = sequelize.define('koala', {
     notes: {
         type: Sequelize.STRING,
     }
-}, config)
+}, config);
 
 module.exports = Koala;
