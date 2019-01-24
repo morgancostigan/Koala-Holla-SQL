@@ -47,10 +47,11 @@ class Form extends Component {
                 <form className='AddKoalaForm' onSubmit={this.postNewKoala}>
                     <h1>Add New Koala</h1>
                     <div>
+
                             <TextField
                                 type="text"
+                                label="Name"
                                 name="name"
-                                placeholder="Name"
                                 value={this.state.name}
                                 onChange={this.handleInputChangeFor('name')}
                             />
@@ -69,7 +70,7 @@ class Form extends Component {
                             <TextField
                                 type="number"
                                 name="age"
-                                placeholder="Age"
+                                label="Age"
                                 value={this.state.age}
                                 onChange={this.handleInputChangeFor('age')}
                             />
@@ -78,7 +79,7 @@ class Form extends Component {
                             <TextField
                                 type="text"
                                 name="notes"
-                                placeholder="Notes"
+                                label="Notes"
                                 value={this.state.notes}
                                 onChange={this.handleInputChangeFor('notes')}
                             />
