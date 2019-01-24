@@ -6,11 +6,14 @@ Koala.sync()
 
 router.get('/', (req, res) => {
     Koala.findAll({raw: true})
+    
     .then( results => {
+        console.log('results', results);
+
         res.send(results)
     })
     .catch(error => {
-        console.log(error)
+        console.log('error', error)
     })
 })
 
