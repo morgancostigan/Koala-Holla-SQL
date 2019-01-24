@@ -1,11 +1,11 @@
-import axios from 'axios';
+import Axios from 'axios';
 import { put, takeEvery, call } from 'redux-saga/effects';
 
 
 function* fetchKoalas() {
     console.log('in fetchKoalas saga');
     try{
-        const results = yield axios.get('/api/koala' );
+        const results = yield Axios.get('/api/koala' );
         yield put({ type: 'SET_KOALA_LIST', payload: results.data });
     }
     catch(error) {
@@ -16,7 +16,7 @@ function* fetchKoalas() {
 function* addKoalas(action) {
     console.log('in addKoalas saga');
     try{
-        yield call(axios.post,'/api/koala', action.payload)
+        yield call(Axios.post,'/api/koala', action.payload)
         yield put({type: 'FETCH_KOALAS' });
     }
     catch(error) {
@@ -27,7 +27,7 @@ function* addKoalas(action) {
 function* updateKoala(action) {
     console.log('updateKoala');
     try{
-        yield axios.put(`/api/koala/${action.payload.id}`, action.payload )
+        yield Axios.put(`/api/koala/${action.payload.id}`, action.payload )
         yield put({type: 'FETCH_KOALAS' });
     }
     catch(error) {
@@ -35,10 +35,10 @@ function* updateKoala(action) {
     }
 }
 
-function* deleteKoala() {
+function* deleteKoala(action) {
     console.log('in deleteKoala');
     try{
-        yield axios.delete(`/api/koala/${action.payload}`)
+        yield Axios.delete(`/api/koala/${action.payload}`)
         yield put({type: 'FETCH_KOALAS' });
     }
     catch(error) {
