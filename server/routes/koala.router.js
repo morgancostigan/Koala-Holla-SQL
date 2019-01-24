@@ -18,7 +18,14 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    res.sendStatus(200);
+    let koala = req.body;
+    Koala.create({name: koala.name, gender: koala.gender, age: koala.age, notes: koala.notes})
+    .then( result => {
+        res.sendStatus(200);
+    })
+    .catch(err => {
+        res.sendStatus(500);
+    })
 })
 
 router.put('/:id', (req, res) => {
