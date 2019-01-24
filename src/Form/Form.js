@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+
 
 class Form extends Component {
 
@@ -45,16 +47,15 @@ class Form extends Component {
                 <form className='AddKoalaForm' onSubmit={this.postNewKoala}>
                     <h1>Add New Koala</h1>
                     <div>
-                        <label htmlFor="name">
-                            Koala Name:
-                            <input
+                            <TextField
                                 type="text"
                                 name="name"
+                                placeholder="Name"
                                 value={this.state.name}
                                 onChange={this.handleInputChangeFor('name')}
                             />
-                        </label>
                     </div>
+                    <br/>
                     <div>
                         <label htmlFor="gender">
                             Gender
@@ -65,26 +66,22 @@ class Form extends Component {
                         </label>
                     </div>
                     <div>
-                        <label htmlFor="age">
-                            Age
-                            <input
+                            <TextField
                                 type="number"
                                 name="age"
+                                placeholder="Age"
                                 value={this.state.age}
                                 onChange={this.handleInputChangeFor('age')}
                             />
-                        </label>
                     </div>
                     <div>
-                        <label htmlFor="notes">
-                            Notes
-                            <input
+                            <TextField
                                 type="text"
                                 name="notes"
+                                placeholder="Notes"
                                 value={this.state.notes}
                                 onChange={this.handleInputChangeFor('notes')}
                             />
-                        </label>
                     </div>
                     <div>
                         <input
