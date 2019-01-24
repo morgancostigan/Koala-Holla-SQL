@@ -5,7 +5,13 @@ Koala.sync()
 
 
 router.get('/', (req, res) => {
-    res.sendStatus(200);
+    Koala.findAll()
+    .then( results => {
+        console.log(results.rows);
+    })
+    .catch(error => {
+        console.log(error)
+    })
 })
 
 router.post('/', (req, res) => {
