@@ -20,16 +20,31 @@ class List extends Component {
     render() {
 
         let tableContent = this.props.reduxStore.koalaList.map((each) => {
-            return (<TableRow key={each.id}>
-                <TableCell>{each.name}</TableCell>
-                <TableCell>{each.gender}</TableCell>
-                <TableCell>{each.age}</TableCell>
-                <TableCell>{each.ready_to_transfer}<Button>
-                    Yes</Button></TableCell>
-                <TableCell><Button>
-                    Transfer</Button></TableCell>
-                <TableCell>{each.notes}</TableCell>
-            </TableRow>);
+            if (each.ready_to_transfer === true){
+                return (<TableRow key={each.id}>
+                    <TableCell>{each.name}</TableCell>
+                    <TableCell>{each.gender}</TableCell>
+                    <TableCell>{each.age}</TableCell>
+                    <TableCell>
+                        YES</TableCell>
+                    <TableCell><Button>
+                        Transfer</Button></TableCell>
+                    <TableCell>{each.notes}</TableCell>
+                </TableRow>);
+            } else {
+                return (<TableRow key={each.id}>
+                    <TableCell>{each.name}</TableCell>
+                    <TableCell>{each.gender}</TableCell>
+                    <TableCell>{each.age}</TableCell>
+                    <TableCell>{each.ready_to_transfer}
+                        <Button>
+                         No
+                        </Button>
+                    </TableCell>
+                    <TableCell>Not Transferable</TableCell>
+                    <TableCell>{each.notes}</TableCell>
+                </TableRow>);
+            }
         })
         
         return (
@@ -49,9 +64,9 @@ class List extends Component {
                 <TableBody>
                     {tableContent}
                 </TableBody>
-
-
             </div>
+
+
         )
     }
 } 
