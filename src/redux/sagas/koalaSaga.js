@@ -6,6 +6,8 @@ function* fetchKoalas() {
     console.log('in fetchKoalas saga');
     try{
         const results = yield Axios.get('/api/koala' );
+        console.log('results.data', results.data);
+        
         yield put({ type: 'SET_KOALA_LIST', payload: results.data });
     }
     catch(error) {
