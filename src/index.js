@@ -8,13 +8,13 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from '../node_modules/redux';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './redux/sagas';
-
+import logger from 'redux-logger';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore( 
     rootReducer,
-    applyMiddleware(sagaMiddleware),
+    applyMiddleware(sagaMiddleware, logger ),
 );
 
 sagaMiddleware.run(rootSaga);
